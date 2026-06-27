@@ -1,0 +1,22 @@
+{
+  "updatedAt": "2026-06-27T12:00:00Z",
+  "phase": "round_of_32",
+  "r32": [
+    { "id": "m73", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m76", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m74", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m75", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m78", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m77", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m79", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m80", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m81", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m82", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m84", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m83", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m85", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m88", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m86", "status": "scheduled", "hg": null, "ag": null },
+    { "id": "m87", "status": "scheduled", "hg": null, "ag": null }
+  ]
+}
