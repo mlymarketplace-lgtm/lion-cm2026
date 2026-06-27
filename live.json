@@ -1,22 +1,39 @@
 {
-  "updatedAt": "2026-06-27T12:00:00Z",
+  "updatedAt": "2026-06-27T20:00:00Z",
   "phase": "round_of_32",
+  "groupKWinner": null,
+
+  "thirdPlaces": [
+    { "group": "A", "team": "RSA", "flag": "🇿🇦", "name": "Afrique du Sud", "pts": 4, "gf": 2, "ga": 2, "gd": 0, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "B", "team": "BIH", "flag": "🇧🇦", "name": "Bosnie-Herzégovine", "pts": 4, "gf": 5, "ga": 4, "gd": 1, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "C", "team": "HTI", "flag": "🇭🇹", "name": "Haïti", "pts": 0, "gf": 2, "ga": 8, "gd": -6, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "D", "team": "PAR", "flag": "🇵🇾", "name": "Paraguay", "pts": 4, "gf": 2, "ga": 4, "gd": -2, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "E", "team": "ECU", "flag": "🇪🇨", "name": "Équateur", "pts": 3, "gf": 2, "ga": 2, "gd": 0, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "F", "team": "SWE", "flag": "🇸🇪", "name": "Suède", "pts": 4, "gf": 7, "ga": 6, "gd": 1, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "G", "team": "IRN", "flag": "🇮🇷", "name": "Iran", "pts": 3, "gf": 4, "ga": 4, "gd": 0, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "H", "team": "CPV", "flag": "🇨🇻", "name": "Cap-Vert", "pts": 5, "gf": 4, "ga": 3, "gd": 1, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "I", "team": "SEN", "flag": "🇸🇳", "name": "Sénégal", "pts": 3, "gf": 8, "ga": 7, "gd": 1, "played": 3, "status": "final", "fairPlay": 0 },
+    { "group": "J", "team": "ALG", "flag": "🇩🇿", "name": "Algérie", "pts": 3, "gf": 2, "ga": 4, "gd": -2, "played": 3, "status": "live", "fairPlay": 0 },
+    { "group": "K", "team": "COD", "flag": "🇨🇩", "name": "RD Congo", "pts": 1, "gf": 1, "ga": 2, "gd": -1, "played": 3, "status": "live", "fairPlay": 0 },
+    { "group": "L", "team": "CRO", "flag": "🇭🇷", "name": "Croatie", "pts": 3, "gf": 3, "ga": 3, "gd": 0, "played": 3, "status": "live", "fairPlay": 0 }
+  ],
+
   "r32": [
-    { "id": "m73", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m76", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m74", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m75", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m78", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m77", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m79", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m80", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m81", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m82", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m84", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m83", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m85", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m88", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m86", "status": "scheduled", "hg": null, "ag": null },
-    { "id": "m87", "status": "scheduled", "hg": null, "ag": null }
+    { "id": "m73", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m76", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m74", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m75", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m78", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m77", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m79", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m80", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m81", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m82", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m84", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m83", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m85", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m88", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m86", "status": "scheduled", "hg": null, "ag": null, "scorers": [] },
+    { "id": "m87", "status": "scheduled", "hg": null, "ag": null, "scorers": [] }
   ]
 }
