@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦁 GaindeSuite · Lions en 16es · CM 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+:root{
+  --vert:#00853F; --rouge:#E31B23; --or:#FDEF42; --noir:#0A0A0A;
+  --g2:#1A1A1A; --g3:#252525; --mu:#666; --bleu:#3B82F6;
+  --or-dim:#FDEF4222; --vert-dim:#00853F22;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--noir);color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;}
+
+/* ── BANDE DRAPEAU ── */
+.band{height:5px;background:linear-gradient(90deg,var(--vert) 33.3%,var(--or) 33.3% 66.6%,var(--rouge) 66.6%);}
+
+/* ── HEADER ── */
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 20px;gap:10px;flex-wrap:wrap;
+  background:linear-gradient(90deg,#000,#00853F15 50%,#000);
+  border-bottom:1px solid #ffffff18;
+  position:sticky;top:0;z-index:300;backdrop-filter:blur(16px);
+}
+.hflag{display:flex;align-items:center;gap:10px;}
+.hflag-emoji{font-size:1.8rem;line-height:1;}
+.htitle{font-family:'Oswald',sans-serif;font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;}
+.htitle span{color:var(--or);}
+.hright{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.phase-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:linear-gradient(90deg,#1a0d00,#251500);
+  border:1px solid var(--or);color:var(--or);
+  font-size:.6rem;font-weight:700;letter-spacing:.14em;
+  padding:3px 12px;border-radius:99px;text-transform:uppercase;
+}
+.btn-music{
+  display:flex;align-items:center;gap:5px;
+  background:#ffffff0d;border:1px solid #ffffff22;
+  border-radius:99px;padding:5px 12px;
+  font-size:.68rem;cursor:pointer;color:#fff;
+  transition:all .2s;text-decoration:none;white-space:nowrap;
+}
+.btn-music:hover{background:#00853F22;border-color:var(--vert);color:#4ade80;}
+.hclock{font-size:1.1rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--or);}
+
+/* ── TICKER ── */
+.ticker-wrap{
+  background:#0d0d0d;border-bottom:1px solid #ffffff0d;
+  padding:6px 12px;display:flex;align-items:center;gap:10px;overflow:hidden;
+}
+.ticker-lbl{font-size:.58rem;font-family:'Oswald',sans-serif;letter-spacing:.14em;
+  color:var(--rouge);text-transform:uppercase;white-space:nowrap;}
+.ticker-track{flex:1;overflow:hidden;}
+.ticker-inner{display:flex;gap:36px;white-space:nowrap;animation:roll 50s linear infinite;}
+@keyframes roll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ti{font-size:.7rem;font-weight:500;}
+.ti-fin{color:var(--mu);}
+.ti-live{color:var(--or);font-weight:700;}
+.ti-sen{color:#4ade80;font-weight:700;}
+.ti-sched{color:#444;}
+
+/* ── HERO PHOTO ── */
+.hero{position:relative;height:220px;overflow:hidden;margin-bottom:0;}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 0%,#00000066 60%,#0A0A0Aee 100%);
+}
+.hero-text{
+  position:absolute;bottom:14px;left:0;right:0;text-align:center;padding:0 16px;
+}
+.hero-text h1{
+  font-family:'Oswald',sans-serif;font-size:1.8rem;font-weight:800;
+  color:#fff;letter-spacing:.08em;text-transform:uppercase;
+  text-shadow:0 2px 12px #000a;line-height:1.1;
+}
+.hero-text p{
+  font-size:.8rem;color:var(--or);margin-top:4px;font-weight:600;
+  text-shadow:0 1px 6px #000a;letter-spacing:.05em;
+}
+
+/* ── MAIN ── */
+.main{max-width:1280px;margin:0 auto;padding:16px 14px;}
+.sec{
+  font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.2em;
+  color:var(--mu);text-transform:uppercase;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.sec::after{content:'';flex:1;height:1px;background:#ffffff0d;}
+
+/* ── FOCUS SÉNÉGAL ── */
+.sen-focus{
+  background:linear-gradient(135deg,#0a1f10 0%,#0f0f0f 55%,#0a0e18 100%);
+  border:1px solid var(--or);border-radius:14px;
+  padding:0;margin-bottom:16px;overflow:hidden;
+}
+.sf-top-bar{
+  background:linear-gradient(90deg,var(--vert),#12a85a 50%,var(--vert));
+  padding:6px 16px;display:flex;align-items:center;justify-content:space-between;
+}
+.sf-top-bar span{font-family:'Oswald',sans-serif;font-size:.65rem;
+  letter-spacing:.16em;color:#000;font-weight:700;text-transform:uppercase;}
+.sf-body{padding:18px 20px;}
+.sf-match-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;}
+.sf-team{text-align:center;flex:1;max-width:140px;}
+.sf-flag-big{font-size:2.8rem;display:block;margin-bottom:5px;line-height:1;}
+.sf-tname{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;}
+.sf-tname.sen{color:var(--or);}
+.sf-trank{font-size:.58rem;color:var(--mu);margin-top:2px;}
+.sf-center{text-align:center;flex-shrink:0;}
+.sf-score-main{font-family:'Oswald',sans-serif;font-size:3.5rem;font-weight:700;
+  color:var(--or);line-height:1;min-width:100px;}
+.sf-score-main.sched{color:#333;font-size:2rem;letter-spacing:.1em;}
+.sf-score-main.live{color:#4ade80;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+.sf-status-badge{display:inline-flex;align-items:center;gap:4px;
+  margin-top:6px;font-size:.6rem;padding:2px 8px;border-radius:99px;}
+.sf-status-badge.sched{background:#ffffff0d;border:1px solid #ffffff18;color:var(--mu);}
+.sf-status-badge.live{background:#4ade8018;border:1px solid #4ade8044;color:#4ade80;}
+.sf-status-badge.fin{background:#ffffff0d;border:1px solid #ffffff18;color:var(--mu);}
+.sf-meta-row{display:flex;align-items:center;justify-content:center;gap:10px;
+  flex-wrap:wrap;margin-bottom:14px;}
+.sf-pill{display:inline-flex;align-items:center;gap:4px;
+  background:#ffffff0d;border:1px solid #ffffff12;border-radius:99px;
+  padding:3px 10px;font-size:.61rem;color:var(--mu);}
+.sf-pill.highlight{border-color:var(--or);color:var(--or);background:var(--or-dim);}
+
+/* Buteurs focus */
+.sf-scorers{background:#0d0d0d;border-radius:10px;padding:10px 14px;
+  margin-bottom:14px;min-height:40px;font-size:.68rem;line-height:1.8;}
+.sf-scorers-title{font-size:.58rem;color:var(--mu);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:5px;}
+.scorer-item{display:flex;align-items:center;gap:6px;}
+.scorer-min{color:var(--or);font-family:'Oswald',sans-serif;font-size:.75rem;min-width:28px;}
+.scorer-name{color:#ddd;}
+.scorer-team{font-size:.6rem;color:var(--mu);}
+
+/* Sim résultat */
+.sf-sim-area{border-top:1px solid #ffffff0d;padding-top:14px;}
+.sf-sim-label{font-size:.63rem;color:var(--mu);text-align:center;margin-bottom:8px;
+  letter-spacing:.08em;text-transform:uppercase;}
+.sf-sim-btns{display:flex;align-items:center;justify-content:center;gap:12px;}
+.sf-sim-btn{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:#ffffff0d;border:2px solid #ffffff12;border-radius:12px;
+  padding:10px 18px;cursor:pointer;transition:all .2s;
+  font-size:.72rem;color:#bbb;min-width:110px;
+}
+.sf-sim-btn:hover{background:#ffffff15;border-color:#ffffff30;}
+.sf-sim-btn .b-flag{font-size:1.6rem;margin-bottom:2px;}
+.sf-sim-btn.active-sen{border-color:var(--or);background:var(--or-dim);color:var(--or);}
+.sf-sim-btn.active-opp{border-color:#aaa;background:#ffffff0d;color:#fff;}
+.sf-sim-sep{color:#333;font-size:1rem;}
+.sf-result-msg{
+  margin-top:12px;padding:10px 14px;border-radius:10px;
+  font-size:.7rem;text-align:center;line-height:1.7;
+  background:#051a0e;border:1px solid #4ade8033;color:#4ade80;
+}
+.sf-result-msg.elim{background:#1a0505;border-color:#E31B2333;color:#f87171;}
+
+/* ── MATCH LIVE GRAND FORMAT ── */
+.live-spotlight{
+  background:linear-gradient(135deg,#1a0a00,#111,#001a0a);
+  border:2px solid var(--rouge);border-radius:14px;
+  padding:18px 20px;margin-bottom:16px;position:relative;overflow:hidden;
+}
+.live-spotlight::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--rouge),var(--or),var(--rouge));
+  animation:shimmer 2s linear infinite;
+}
+@keyframes shimmer{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
+.ls-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--rouge);color:#fff;
+  font-size:.6rem;font-weight:700;letter-spacing:.12em;
+  padding:3px 10px;border-radius:99px;text-transform:uppercase;
+  margin-bottom:10px;animation:blink 1.5s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.ls-dot{width:6px;height:6px;border-radius:50%;background:#fff;}
+
+/* ── TABLEAU 3ES PLACES ── */
+.thirds-wrap{background:var(--g2);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.thirds-table{width:100%;border-collapse:collapse;font-size:.73rem;}
+.thirds-table th{
+  font-size:.58rem;letter-spacing:.1em;color:var(--mu);
+  padding:7px 8px;border-bottom:1px solid #ffffff0d;
+  text-transform:uppercase;font-weight:400;
+}
+.thirds-table td{padding:7px 8px;border-bottom:1px solid #ffffff06;vertical-align:middle;}
+.thirds-table tr:last-child td{border-bottom:none;}
+.thirds-table tr:hover td{background:#ffffff04;}
+.tr-rank{color:var(--mu);font-size:.65rem;width:22px;text-align:center;}
+.tr-flag{width:24px;text-align:center;font-size:.9rem;}
+.tr-name{font-weight:500;}
+.tr-pts{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;text-align:center;width:30px;}
+.tr-num{font-size:.72rem;text-align:center;width:28px;font-variant-numeric:tabular-nums;color:#aaa;}
+.tr-status{font-size:.58rem;text-align:center;width:70px;}
+.tr-opp{font-size:.6rem;color:var(--mu);max-width:100px;}
+/* Rows */
+.tr-qualified td{background:linear-gradient(90deg,#00853F0d,transparent 60%);}
+.tr-qualified td:first-child{border-left:3px solid var(--vert);}
+.tr-sen td{background:linear-gradient(90deg,#FDEF4212,transparent 60%);}
+.tr-sen td:first-child{border-left:3px solid var(--or);}
+.tr-sen .tr-name{color:var(--or);font-weight:700;}
+.tr-bubble td{opacity:.55;}
+.tr-bubble td:first-child{border-left:3px solid #444;}
+.tr-eliminated td{opacity:.25;}
+.tr-eliminated td:first-child{border-left:3px solid #222;}
+.badge-q{display:inline-flex;font-size:.5rem;background:#4ade8012;color:#4ade80;
+  border:1px solid #4ade8022;padding:1px 5px;border-radius:99px;}
+.badge-live{display:inline-flex;font-size:.5rem;background:var(--or-dim);color:var(--or);
+  border:1px solid #FDEF4233;padding:1px 5px;border-radius:99px;animation:blink 2s infinite;}
+.badge-elim{display:inline-flex;font-size:.5rem;background:#E31B2312;color:#f87171;
+  border:1px solid #E31B2322;padding:1px 5px;border-radius:99px;}
+
+/* ── GRILLE R32 ── */
+.r32-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
+.r32-day-sep{grid-column:1/-1;}
+.r32-day-lbl{
+  font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.16em;
+  color:var(--mu);text-transform:uppercase;
+  padding:8px 0 3px;display:flex;align-items:center;gap:8px;
+}
+.r32-day-lbl::after{content:'';flex:1;height:1px;background:#ffffff08;}
+
+/* Carte match CARRÉE */
+.r32-card{
+  background:var(--g2);border:1px solid #ffffff0d;border-radius:12px;
+  padding:12px;cursor:pointer;transition:all .18s;position:relative;
+  display:flex;flex-direction:column;gap:8px;
+}
+.r32-card:hover{background:var(--g3);border-color:#ffffff22;transform:translateY(-1px);}
+.r32-card.sen-card{border-color:var(--or);background:linear-gradient(135deg,#0d1700,#111);}
+.r32-card.live-card{border-color:var(--rouge);box-shadow:0 0 0 1px #E31B2333;}
+.r32-card.done-card{opacity:.75;}
+.r32-card.sim-card{border-color:#3B82F644;}
+
+/* Header carte */
+.rc-header{display:flex;align-items:center;justify-content:space-between;}
+.rc-match-id{font-size:.55rem;color:#333;font-family:'Oswald',sans-serif;letter-spacing:.08em;}
+.rc-time{font-size:.55rem;color:var(--mu);}
+
+/* Score central CARRÉ */
+.rc-score-block{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  background:#0d0d0d;border-radius:10px;padding:10px 8px;
+}
+.rc-team-side{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+.rc-team-flag{font-size:1.4rem;line-height:1;}
+.rc-team-name{font-size:.6rem;font-weight:600;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70px;}
+.rc-team-name.sen{color:var(--or);}
+.rc-score-center{display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:0 10px;flex-shrink:0;}
+.rc-score-nums{font-family:'Oswald',sans-serif;font-size:1.6rem;font-weight:700;
+  color:#fff;white-space:nowrap;}
+.rc-score-nums.live{color:var(--or);}
+.rc-score-nums.sched{color:#333;font-size:1rem;letter-spacing:.05em;}
+.rc-score-sep{color:#333;font-size:.8rem;}
+
+/* Buteurs */
+.rc-scorers{font-size:.57rem;color:var(--mu);line-height:1.6;min-height:14px;}
+.rc-scorer-item{display:flex;gap:4px;}
+.rc-scorer-min{color:var(--or);font-family:'Oswald',sans-serif;}
+
+/* Footer carte */
+.rc-footer{display:flex;align-items:center;justify-content:space-between;gap:6px;}
+.rc-venue{font-size:.55rem;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
+.rc-badge{font-size:.53rem;padding:2px 7px;border-radius:99px;white-space:nowrap;flex-shrink:0;}
+.rc-badge.sched{color:#444;background:#ffffff07;border:1px solid #ffffff0d;}
+.rc-badge.live{color:var(--or);background:var(--or-dim);border:1px solid #FDEF4233;animation:blink 2s infinite;}
+.rc-badge.fin{color:#4ade80;background:#4ade8010;border:1px solid #4ade8030;}
+.rc-badge.sim{color:var(--bleu);background:#3B82F610;border:1px solid #3B82F630;}
+
+/* Overlay vainqueur */
+.r32-card .wo{
+  display:none;position:absolute;inset:0;
+  align-items:center;justify-content:center;gap:8px;
+  background:#000000aa;backdrop-filter:blur(3px);border-radius:11px;z-index:10;
+}
+.r32-card:hover .wo{display:flex;}
+.wo-btn{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:#ffffff12;border:1px solid #ffffff25;border-radius:9px;
+  padding:8px 12px;cursor:pointer;transition:all .15s;font-size:.65rem;color:#ddd;
+}
+.wo-btn:hover{background:#ffffff25;transform:scale(1.04);}
+.wo-btn .wf{font-size:1.4rem;}
+.wo-label{font-size:.55rem;color:var(--mu);margin-top:3px;text-align:center;}
+
+/* ── BRACKET 8ES ── */
+.bracket-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
+.bracket-card{background:#111;border:1px solid #ffffff0d;border-radius:10px;padding:10px 12px;}
+.bracket-card.sen-path{border-color:var(--or);background:linear-gradient(135deg,#0d1700,#111);}
+.bc-label{font-size:.55rem;color:#333;font-family:'Oswald',sans-serif;
+  letter-spacing:.08em;margin-bottom:7px;}
+.bc-teams{display:flex;align-items:center;gap:6px;}
+.bc-slot{display:flex;align-items:center;gap:4px;flex:1;
+  font-size:.7rem;color:#444;padding:5px 7px;border-radius:6px;background:#0d0d0d;}
+.bc-slot.filled{color:#ccc;background:#151515;}
+.bc-slot.sen-slot{color:var(--or);background:#0d1700;}
+.bc-vs{font-size:.65rem;color:#222;flex-shrink:0;}
+.bc-sen-badge{font-size:.58rem;color:var(--or);margin-top:5px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .r32-grid{grid-template-columns:1fr;}
+  .bracket-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  html,body{width:100%;overflow-x:hidden;}
+  .main{padding:10px 8px;}
+  header{padding:7px 10px;flex-direction:column;align-items:stretch;gap:5px;}
+  .hflag{justify-content:space-between;}
+  .hright{flex-direction:row;flex-wrap:wrap;gap:6px;justify-content:space-between;}
+  .hero{height:160px;}
+  .hero-text h1{font-size:1.3rem;}
+  .sf-flag-big{font-size:2rem;}
+  .sf-score-main{font-size:2.5rem;}
+  .sf-sim-btn{padding:8px 12px;min-width:90px;}
+  .r32-grid{grid-template-columns:1fr;}
+  .bracket-grid{grid-template-columns:1fr;}
+  .thirds-table{font-size:.65rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="band"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="hflag">
+    <span class="hflag-emoji">🇸🇳</span>
+    <div class="htitle">🦁 <span>Gainde</span>Suite · CM 2026</div>
+  </div>
+  <div class="hright">
+    <div class="phase-badge">🏆 16es de Finale</div>
+    <a class="btn-music" href="https://www.youtube.com/watch?v=ZzAsyZtYLic&t=174" target="_blank" rel="noopener">
+      🎵 Ambiance Lions
+    </a>
+    <div style="text-align:right;">
+      <div class="hclock" id="hclock">--:--</div>
+      <div style="font-size:.58rem;color:var(--mu);" id="hdate"></div>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <span class="ticker-lbl">⚽ R32</span>
+  <div class="ticker-track"><div class="ticker-inner" id="ticker">Chargement…</div></div>
+</div>
+
+<!-- HERO PHOTO -->
+<div class="hero">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/2022_FIFA_World_Cup_AF-A_Match_6_%28cropped%29.jpg/1280px-2022_FIFA_World_Cup_AF-A_Match_6_%28cropped%29.jpg"
+       alt="Lions de la Téranga"
+       onerror="this.src='https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1280&q=80'">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>🦁 Lions de la Téranga</h1>
+    <p id="hero-sub">Coupe du Monde 2026 · Qualifiés pour les 16es de finale 🇸🇳</p>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ═══ FOCUS SÉNÉGAL ═══ -->
+<div class="sec">🇸🇳 Sénégal en 16e de finale</div>
+<div class="sen-focus" id="sen-focus">
+  <div class="sf-top-bar">
+    <span id="sf-match-label">🏆 Round of 32</span>
+    <span id="sf-match-date">Calcul en cours…</span>
+  </div>
+  <div class="sf-body">
+    <div class="sf-match-row">
+      <div class="sf-team" id="sf-opp-side">
+        <span class="sf-flag-big" id="sf-opp-flag">❓</span>
+        <div class="sf-tname" id="sf-opp-name">À définir</div>
+        <div class="sf-trank" id="sf-opp-rank"></div>
+      </div>
+      <div class="sf-center">
+        <div class="sf-score-main sched" id="sf-score">vs</div>
+        <div id="sf-status-badge" class="sf-status-badge sched">📅 À venir</div>
+      </div>
+      <div class="sf-team">
+        <span class="sf-flag-big">🇸🇳</span>
+        <div class="sf-tname sen">Sénégal</div>
+        <div class="sf-trank" id="sf-sen-rank">3e Gr. I · Calcul du rang…</div>
+      </div>
+    </div>
+    <div class="sf-meta-row" id="sf-meta-row">
+      <span class="sf-pill highlight" id="sf-pill-date">📅 Calcul…</span>
+      <span class="sf-pill" id="sf-pill-venue">🏟️ …</span>
+      <span class="sf-pill" id="sf-pill-time">⏰ …</span>
+    </div>
+    <div class="sf-scorers" id="sf-scorers" style="display:none;">
+      <div class="sf-scorers-title">⚽ Buteurs</div>
+      <div id="sf-scorers-list"></div>
+    </div>
+    <div class="sf-sim-area">
+      <div class="sf-sim-label">Simule le vainqueur</div>
+      <div class="sf-sim-btns">
+        <div class="sf-sim-btn" id="sf-btn-opp" onclick="pickWinner('m80_dyn', 'OPP')">
+          <div class="b-flag" id="sf-btn-opp-flag">❓</div>
+          <div id="sf-btn-opp-name">Adversaire</div>
+        </div>
+        <div class="sf-sim-sep">ou</div>
+        <div class="sf-sim-btn" id="sf-btn-sen" onclick="pickWinner('m80_dyn', 'SEN')">
+          <div class="b-flag">🇸🇳</div>
+          <div>Sénégal 🦁</div>
+        </div>
+      </div>
+      <div class="sf-result-msg" id="sf-result-msg" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MATCH LIVE (si existant) ═══ -->
+<div id="live-spotlight-wrap" style="display:none;">
+  <div class="sec">🔴 En direct maintenant</div>
+  <div class="live-spotlight" id="live-spotlight">
+    <!-- généré dynamiquement -->
+  </div>
+</div>
+
+<!-- ═══ TABLEAU 3ES PLACES ═══ -->
+<div class="sec">📊 Classement des 3e places — <span id="thirds-status-lbl" style="color:var(--or);font-family:'Oswald',sans-serif;">Provisoire</span></div>
+<div class="thirds-wrap">
+  <table class="thirds-table">
+    <thead>
+      <tr>
+        <th class="tr-rank">#</th>
+        <th class="tr-flag"></th>
+        <th style="text-align:left;">Équipe</th>
+        <th class="tr-pts">Pts</th>
+        <th class="tr-num">GD</th>
+        <th class="tr-num">BP</th>
+        <th class="tr-num">BC</th>
+        <th class="tr-status">Statut</th>
+        <th class="tr-opp">Adv. projeté</th>
+      </tr>
+    </thead>
+    <tbody id="thirds-body"></tbody>
+  </table>
+</div>
+
+<!-- ═══ GRILLE 16 MATCHS ═══ -->
+<div class="sec">📋 Round of 32 — 16 matchs</div>
+<div style="font-size:.67rem;color:var(--mu);margin-bottom:10px;line-height:1.6;">
+  💡 <strong style="color:#fff;">Clique sur le vainqueur</strong> de chaque match pour générer les 8es automatiquement.
+</div>
+<div class="r32-grid" id="r32-grid"></div>
+
+<!-- ═══ BRACKET 8ES ═══ -->
+<div class="sec">🔮 Simulation des 8es de finale</div>
+<div style="font-size:.67rem;color:var(--mu);margin-bottom:10px;">
+  Basé sur tes simulations ci-dessus. Le parcours 🇸🇳 Sénégal est mis en évidence.
+</div>
+<div class="bracket-grid" id="bracket-grid"></div>
+
+<!-- FOOTER -->
+<div style="text-align:center;font-size:.62rem;color:var(--mu);margin-top:18px;
+  padding:12px;border-top:1px solid #ffffff0d;line-height:2.2;">
+  🔄 <span id="live-updated-at">En attente de données…</span><br>
+  Allez les Lions de la Téranga ! 🦁🇸🇳<br>
+  <strong style="color:var(--or);">Offert par Mohamed LY et le Think Tank IPODE</strong>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ══════════════════════════════════════════════════════
+// MAPPING ADVERSAIRE SÉNÉGAL selon rang 3e place
+// ══════════════════════════════════════════════════════
+const SEN_MAPPING = {
+  5: { matchId:'m80', opp:'Angleterre', oppFlag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', oppRank:'1er Gr. L', venue:'Atlanta', dateLabel:'Mer. 1er juillet', timeLabel:'18h ET · 00h Paris' },
+  6: { matchId:'m85', opp:'Suisse',     oppFlag:'🇨🇭', oppRank:'1er Gr. B', venue:'Vancouver', dateLabel:'Jeu. 2 juillet', timeLabel:'01h ET · 07h Paris' },
+  7: { matchId:'m87', opp:null,         oppFlag:null, oppRank:'1er Gr. K', venue:'Kansas City', dateLabel:'Ven. 3 juillet', timeLabel:'21h30 ET · 03h30 Paris' },
+  8: { matchId:'m82', opp:'Belgique',   oppFlag:'🇧🇪', oppRank:'1er Gr. G', venue:'Seattle', dateLabel:'Jeu. 2 juillet', timeLabel:'16h ET · 22h Paris' }
+};
+
+// ══════════════════════════════════════════════════════
+// DONNÉES STATIQUES R32
+// ══════════════════════════════════════════════════════
+const R32_STATIC = [
+  { id:'m73', day:'Dim. 28 juin', home:{code:'RSA',flag:'🇿🇦',name:'Afrique du Sud'}, away:{code:'CAN',flag:'🇨🇦',name:'Canada'}, venue:'Los Angeles', timeLocal:'22h ET · 04h Paris', match:'M73' },
+  { id:'m76', day:'Lun. 29 juin', home:{code:'BRA',flag:'🇧🇷',name:'Brésil'}, away:{code:'JPN',flag:'🇯🇵',name:'Japon'}, venue:'Houston', timeLocal:'19h ET · 01h Paris', match:'M76' },
+  { id:'m74', day:'Lun. 29 juin', home:{code:'GER',flag:'🇩🇪',name:'Allemagne'}, away:{code:'PAR',flag:'🇵🇾',name:'Paraguay'}, venue:'Boston', timeLocal:'22h30 ET · 04h30 Paris', match:'M74' },
+  { id:'m75', day:'Mar. 30 juin', home:{code:'NED',flag:'🇳🇱',name:'Pays-Bas'}, away:{code:'MAR',flag:'🇲🇦',name:'Maroc'}, venue:'Monterrey', timeLocal:'03h ET · 09h Paris', match:'M75' },
+  { id:'m78', day:'Mar. 30 juin', home:{code:'CIV',flag:'🇨🇮',name:'Côte d\'Ivoire'}, away:{code:'NOR',flag:'🇳🇴',name:'Norvège'}, venue:'Dallas', timeLocal:'19h ET · 01h Paris', match:'M78' },
+  { id:'m77', day:'Mar. 30 juin', home:{code:'FRA',flag:'🇫🇷',name:'France'}, away:{code:'SWE',flag:'🇸🇪',name:'Suède'}, venue:'New Jersey', timeLocal:'23h ET · 05h Paris', match:'M77' },
+  { id:'m79', day:'Mer. 1er juil.', home:{code:'MEX',flag:'🇲🇽',name:'Mexique'}, away:{code:'TBD',flag:'❓',name:'À définir'}, venue:'Mexico City', timeLocal:'03h ET · 09h Paris', match:'M79' },
+  { id:'m80', day:'Mer. 1er juil.', home:{code:'TBD',flag:'❓',name:'À définir'}, away:{code:'SEN',flag:'🇸🇳',name:'Sénégal'}, venue:'Atlanta', timeLocal:'18h ET · 00h Paris', match:'M80', isSen:true },
+  { id:'m81', day:'Mer. 1er juil.', home:{code:'USA',flag:'🇺🇸',name:'États-Unis'}, away:{code:'BIH',flag:'🇧🇦',name:'Bosnie-Herz.'}, venue:'San Francisco', timeLocal:'22h ET · 04h Paris', match:'M81' },
+  { id:'m82', day:'Jeu. 2 juil.', home:{code:'BEL',flag:'🇧🇪',name:'Belgique'}, away:{code:'TBD',flag:'❓',name:'À définir'}, venue:'Seattle', timeLocal:'16h ET · 22h Paris', match:'M82' },
+  { id:'m84', day:'Jeu. 2 juil.', home:{code:'ESP',flag:'🇪🇸',name:'Espagne'}, away:{code:'TBD',flag:'❓',name:'À définir'}, venue:'Los Angeles', timeLocal:'21h ET · 03h Paris', match:'M84' },
+  { id:'m83', day:'Jeu. 2 juil.', home:{code:'POR',flag:'🇵🇹',name:'Portugal'}, away:{code:'GHA',flag:'🇬🇭',name:'Ghana'}, venue:'Toronto', timeLocal:'01h ET · 07h Paris', match:'M83' },
+  { id:'m85', day:'Jeu. 2 juil.', home:{code:'SUI',flag:'🇨🇭',name:'Suisse'}, away:{code:'TBD',flag:'❓',name:'À définir'}, venue:'Vancouver', timeLocal:'01h ET · 07h Paris', match:'M85' },
+  { id:'m88', day:'Ven. 3 juil.', home:{code:'AUS',flag:'🇦🇺',name:'Australie'}, away:{code:'EGY',flag:'🇪🇬',name:'Égypte'}, venue:'Dallas', timeLocal:'20h ET · 02h Paris', match:'M88' },
+  { id:'m86', day:'Ven. 3 juil.', home:{code:'ARG',flag:'🇦🇷',name:'Argentine'}, away:{code:'CPV',flag:'🇨🇻',name:'Cap-Vert'}, venue:'Miami', timeLocal:'00h ET · 06h Paris', match:'M86' },
+  { id:'m87', day:'Ven. 3 juil.', home:{code:'COL',flag:'🇨🇴',name:'Colombie'}, away:{code:'CRO',flag:'🇭🇷',name:'Croatie'}, venue:'Kansas City', timeLocal:'03h30 ET · 09h30 Paris', match:'M87' },
+];
+
+// Bracket 8es
+const R16_PAIRS = [
+  { id:'q89', m1:'m74', m2:'m77', label:'M89', venue:'Philadelphie · 5 juil.' },
+  { id:'q90', m1:'m73', m2:'m75', label:'M90', venue:'Houston · 5 juil.' },
+  { id:'q91', m1:'m76', m2:'m78', label:'M91', venue:'New Jersey · 6 juil.' },
+  { id:'q92', m1:'m79', m2:'m80', label:'M92', venue:'Mexico City · 6 juil.', isSenPath:true },
+  { id:'q93', m1:'m83', m2:'m84', label:'M93', venue:'Dallas · 7 juil.' },
+  { id:'q94', m1:'m81', m2:'m82', label:'M94', venue:'Seattle · 7 juil.' },
+  { id:'q95', m1:'m86', m2:'m88', label:'M95', venue:'Atlanta · 8 juil.' },
+  { id:'q96', m1:'m85', m2:'m87', label:'M96', venue:'Vancouver · 8 juil.' },
+];
+
+// État app
+let LIVE_DATA = { thirdPlaces:[], r32:[], groupKWinner:null, updatedAt:null };
+const WINNERS = {}; // matchId → code équipe
+let senRank = 5; // calculé dynamiquement
+
+// ══════════════════════════════════════════════════════
+// CLOCK
+// ══════════════════════════════════════════════════════
+function updateClock(){
+  const now = new Date();
+  document.getElementById('hclock').textContent =
+    now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('hdate').textContent =
+    now.toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'long'});
+}
+updateClock(); setInterval(updateClock,1000);
+
+// ══════════════════════════════════════════════════════
+// CALCUL RANG SÉNÉGAL
+// ══════════════════════════════════════════════════════
+function calcSenRank(thirds){
+  if(!thirds || !thirds.length) return 5;
+  // Trier les 12 troisièmes : pts DESC, gd DESC, gf DESC, fairPlay ASC
+  const sorted = [...thirds].sort((a,b)=>{
+    if(b.pts !== a.pts) return b.pts - a.pts;
+    if(b.gd  !== a.gd)  return b.gd  - a.gd;
+    if(b.gf  !== a.gf)  return b.gf  - a.gf;
+    return (a.fairPlay||0) - (b.fairPlay||0);
+  });
+  // Prendre les 8 meilleurs
+  const top8 = sorted.slice(0,8);
+  const senIdx = top8.findIndex(t => t.team === 'SEN');
+  if(senIdx === -1) return 9; // non qualifié
+  return senIdx + 1; // rang 1-8
+}
+
+// ══════════════════════════════════════════════════════
+// ADVERSAIRE SÉNÉGAL
+// ══════════════════════════════════════════════════════
+function getSenOpponent(rank, groupKWinner){
+  const m = SEN_MAPPING[rank] || SEN_MAPPING[5];
+  if(rank === 7){
+    if(groupKWinner === 'COL') return {...m, opp:'Colombie', oppFlag:'🇨🇴'};
+    if(groupKWinner === 'POR') return {...m, opp:'Portugal', oppFlag:'🇵🇹'};
+    return {...m, opp:'Col. ou Portugal', oppFlag:'🇨🇴🇵🇹'};
+  }
+  return m;
+}
+
+// ══════════════════════════════════════════════════════
+// RENDU FOCUS SÉNÉGAL
+// ══════════════════════════════════════════════════════
+function renderSenFocus(){
+  const info = getSenOpponent(senRank, LIVE_DATA.groupKWinner);
+  // Mettre à jour l'adversaire dans R32_STATIC pour m80
+  const m80 = R32_STATIC.find(m=>m.id==='m80');
+  if(m80 && info.opp){
+    m80.home = {code:'OPP', flag: info.oppFlag.split('')[0] || '❓', name: info.opp};
+  }
+
+  // Header
+  document.getElementById('sf-match-label').textContent = `🏆 ${info.matchId?.toUpperCase().replace('M','Match ')} · Round of 32`;
+  document.getElementById('sf-match-date').textContent = `${info.dateLabel} · ${info.timeLabel}`;
+
+  // Adversaire
+  document.getElementById('sf-opp-flag').textContent = info.oppFlag || '❓';
+  document.getElementById('sf-opp-name').textContent = info.opp || 'À définir';
+  document.getElementById('sf-opp-rank').textContent = info.oppRank || '';
+
+  // Rang Sénégal
+  const rankLabel = senRank <= 8 ? `3e Gr. I · ${senRank}e meilleur 3e` : '3e Gr. I · hors top 8';
+  document.getElementById('sf-sen-rank').textContent = rankLabel;
+
+  // Méta
+  document.getElementById('sf-pill-date').textContent = `📅 ${info.dateLabel}`;
+  document.getElementById('sf-pill-venue').textContent = `🏟️ ${info.venue}`;
+  document.getElementById('sf-pill-time').textContent = `⏰ ${info.timeLocal || info.timeLabel}`;
+
+  // Score live depuis r32
+  const matchId = info.matchId;
+  const liveMatch = LIVE_DATA.r32?.find(m => m.id === matchId);
+  const scoreEl = document.getElementById('sf-score');
+  const statusEl = document.getElementById('sf-status-badge');
+
+  if(liveMatch && liveMatch.status === 'live' && liveMatch.hg !== null){
+    scoreEl.textContent = `${liveMatch.ag} – ${liveMatch.hg}`; // away=SEN
+    scoreEl.className = 'sf-score-main live';
+    statusEl.textContent = '🔴 LIVE';
+    statusEl.className = 'sf-status-badge live';
+  } else if(liveMatch && liveMatch.status === 'final' && liveMatch.hg !== null){
+    scoreEl.textContent = `${liveMatch.ag} – ${liveMatch.hg}`;
+    scoreEl.className = 'sf-score-main';
+    statusEl.textContent = '✓ Terminé';
+    statusEl.className = 'sf-status-badge fin';
+  } else {
+    scoreEl.textContent = 'vs';
+    scoreEl.className = 'sf-score-main sched';
+    statusEl.textContent = '📅 À venir';
+    statusEl.className = 'sf-status-badge sched';
+  }
+
+  // Buteurs
+  if(liveMatch && liveMatch.scorers && liveMatch.scorers.length > 0){
+    document.getElementById('sf-scorers').style.display = 'block';
+    document.getElementById('sf-scorers-list').innerHTML = liveMatch.scorers.map(s =>
+      `<div class="scorer-item">
+        <span class="scorer-min">${s.minute}</span>
+        <span class="scorer-name">${s.name}</span>
+        <span class="scorer-team">(${s.team})</span>
+      </div>`
+    ).join('');
+  } else {
+    document.getElementById('sf-scorers').style.display = 'none';
+  }
+
+  // Boutons sim
+  document.getElementById('sf-btn-opp-flag').textContent = info.oppFlag || '❓';
+  document.getElementById('sf-btn-opp-name').textContent = info.opp || 'Adversaire';
+
+  // Résultat sim
+  const w = WINNERS['m80_dyn'];
+  const btnSen = document.getElementById('sf-btn-sen');
+  const btnOpp = document.getElementById('sf-btn-opp');
+  const msg = document.getElementById('sf-result-msg');
+  btnSen.classList.remove('active-sen'); btnOpp.classList.remove('active-opp');
+  if(w === 'SEN'){
+    btnSen.classList.add('active-sen');
+    msg.style.display = 'block';
+    msg.className = 'sf-result-msg';
+    msg.innerHTML = `🦁 <strong style="color:#4ade80">Sénégal en 8e de finale !</strong><br>
+      <span style="color:var(--mu)">Les Lions affrontent le vainqueur M79 (Mexique vs TBD)<br>→ 8e de finale · Mexico City · 6 juillet</span>`;
+  } else if(w === 'OPP'){
+    btnOpp.classList.add('active-opp');
+    msg.style.display = 'block';
+    msg.className = 'sf-result-msg elim';
+    msg.innerHTML = `🏴󠁧󠁢󠁥󠁮󠁧󠁿 <strong>${info.opp || 'L\'adversaire'} qualifié(e)</strong><br>
+      <span style="color:var(--mu)">Le Sénégal est éliminé. Belle aventure Lions ! 🇸🇳</span>`;
+  } else {
+    msg.style.display = 'none';
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// RENDU TABLEAU 3ES
+// ══════════════════════════════════════════════════════
+function renderThirds(){
+  const thirds = LIVE_DATA.thirdPlaces || [];
+  const allFinal = thirds.every(t => t.status === 'final');
+  document.getElementById('thirds-status-lbl').textContent = allFinal ? 'Classement final ✓' : 'Provisoire — en direct';
+
+  const sorted = [...thirds].sort((a,b)=>{
+    if(b.pts !== a.pts) return b.pts - a.pts;
+    if(b.gd  !== a.gd)  return b.gd  - a.gd;
+    if(b.gf  !== a.gf)  return b.gf  - a.gf;
+    return (a.fairPlay||0) - (b.fairPlay||0);
+  });
+
+  const top8codes = sorted.slice(0,8).map(t=>t.team);
+  senRank = top8codes.indexOf('SEN') + 1 || 9;
+
+  const oppMapping = {1:'—',2:'—',3:'—',4:'—',5:'vs Angleterre',6:'vs Suisse',7:'vs Col./Por.',8:'vs Belgique'};
+
+  const tbody = document.getElementById('thirds-body');
+  tbody.innerHTML = sorted.map((t, i) => {
+    const rank = i + 1;
+    const isQ = rank <= 8;
+    const isSen = t.team === 'SEN';
+    const isLive = t.status === 'live';
+
+    let rowClass = isQ ? (isSen ? 'tr-sen' : 'tr-qualified') : (rank <= 10 ? 'tr-bubble' : 'tr-eliminated');
+    let statusBadge = '';
+    if(isLive) statusBadge = `<span class="badge-live">⚡ LIVE</span>`;
+    else if(isQ) statusBadge = `<span class="badge-q">✓ Qualif.</span>`;
+    else statusBadge = `<span class="badge-elim">✗ Élim.</span>`;
+
+    const oppText = isQ ? (oppMapping[rank] || '—') : '—';
+
+    return `<tr class="${rowClass}">
+      <td class="tr-rank">${rank}</td>
+      <td class="tr-flag">${t.flag}</td>
+      <td class="tr-name">${t.name}${isSen ? ' 🦁' : ''}</td>
+      <td class="tr-pts">${t.pts}</td>
+      <td class="tr-num">${t.gd > 0 ? '+'+t.gd : t.gd}</td>
+      <td class="tr-num">${t.gf}</td>
+      <td class="tr-num">${t.ga}</td>
+      <td class="tr-status">${statusBadge}</td>
+      <td class="tr-opp" style="font-size:.58rem;color:${isSen?'var(--or)':'var(--mu)'};">${oppText}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════
+// RENDU GRILLE R32
+// ══════════════════════════════════════════════════════
+function getR32Live(id){ return LIVE_DATA.r32?.find(m=>m.id===id) || {}; }
+
+function renderR32(){
+  const grid = document.getElementById('r32-grid');
+  grid.innerHTML = '';
+  let lastDay = '';
+
+  R32_STATIC.forEach(m => {
+    // Mise à jour adversaire Sénégal depuis le mapping
+    if(m.isSen){
+      const info = getSenOpponent(senRank, LIVE_DATA.groupKWinner);
+      m.home = {code:'OPP', flag:info.oppFlag||'❓', name:info.opp||'À définir'};
+    }
+
+    if(m.day !== lastDay){
+      lastDay = m.day;
+      const sep = document.createElement('div');
+      sep.className = 'r32-day-sep';
+      sep.innerHTML = `<div class="r32-day-lbl">📅 ${m.day}</div>`;
+      grid.appendChild(sep);
+    }
+
+    const live = getR32Live(m.id);
+    const status = live.status || 'scheduled';
+    const win = WINNERS[m.id];
+
+    const card = document.createElement('div');
+    card.className = 'r32-card' +
+      (m.isSen ? ' sen-card' : '') +
+      (status==='live' ? ' live-card' : '') +
+      (status==='final' ? ' done-card' : '') +
+      (win ? ' sim-card' : '');
+
+    // Score
+    let scoreHtml = '';
+    if(status !== 'scheduled' && live.hg !== null){
+      scoreHtml = `<span class="rc-score-nums ${status==='live'?'live':''}">${live.hg} – ${live.ag}</span>`;
+    } else {
+      scoreHtml = `<span class="rc-score-nums sched">vs</span>`;
+    }
+
+    // Badge status
+    let badge = '';
+    if(status==='live') badge = `<span class="rc-badge live">🔴 LIVE</span>`;
+    else if(status==='final') badge = `<span class="rc-badge fin">✓ Terminé</span>`;
+    else if(win) badge = `<span class="rc-badge sim">Simulé ✓</span>`;
+    else badge = `<span class="rc-badge sched">${m.timeLocal}</span>`;
+
+    // Buteurs
+    const scorers = live.scorers || [];
+    const scorersHtml = scorers.length > 0
+      ? scorers.map(s=>`<div class="rc-scorer-item"><span class="rc-scorer-min">${s.minute}</span><span style="color:#aaa">${s.name}</span> <span style="color:#555;font-size:.53rem;">${s.team}</span></div>`).join('')
+      : '';
+
+    // Vainqueur simulé
+    let winBadge = '';
+    if(win){
+      const wt = win === m.home.code ? m.home : m.away;
+      winBadge = `<div style="font-size:.6rem;color:var(--or);text-align:center;margin-top:2px;">✓ ${wt.flag} ${wt.name}</div>`;
+    }
+
+    const hNameClass = m.home.code==='SEN' ? 'rc-team-name sen' : 'rc-team-name';
+    const aNameClass = m.away.code==='SEN' ? 'rc-team-name sen' : 'rc-team-name';
+
+    card.innerHTML = `
+      <div class="rc-header">
+        <span class="rc-match-id">${m.match}</span>
+        <span class="rc-time">${m.day}</span>
+      </div>
+      <div class="rc-score-block">
+        <div class="rc-team-side">
+          <span class="rc-team-flag">${m.home.flag}</span>
+          <span class="${hNameClass}">${m.home.name}</span>
+        </div>
+        <div class="rc-score-center">${scoreHtml}</div>
+        <div class="rc-team-side">
+          <span class="rc-team-flag">${m.away.flag}</span>
+          <span class="${aNameClass}">${m.away.name}</span>
+        </div>
+      </div>
+      ${scorers.length > 0 ? `<div class="rc-scorers">${scorersHtml}</div>` : ''}
+      <div class="rc-footer">
+        <span class="rc-venue">🏟️ ${m.venue}</span>
+        ${badge}
+      </div>
+      ${winBadge}
+      <div class="wo">
+        <div class="wo-btn" onclick="event.stopPropagation();pickWinner('${m.id}','${m.home.code}')">
+          <span class="wf">${m.home.flag}</span>
+          <span>${m.home.name}</span>
+          <span class="wo-label">gagne</span>
+        </div>
+        <div class="wo-btn" onclick="event.stopPropagation();pickWinner('${m.id}','${m.away.code}')">
+          <span class="wf">${m.away.flag}</span>
+          <span>${m.away.name}</span>
+          <span class="wo-label">gagne</span>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// MATCH LIVE SPOTLIGHT
+// ══════════════════════════════════════════════════════
+function renderLiveSpotlight(){
+  const liveMatches = LIVE_DATA.r32?.filter(m=>m.status==='live') || [];
+  const wrap = document.getElementById('live-spotlight-wrap');
+  const spot = document.getElementById('live-spotlight');
+
+  if(!liveMatches.length){ wrap.style.display='none'; return; }
+  wrap.style.display='block';
+
+  const lm = liveMatches[0];
+  const st = R32_STATIC.find(m=>m.id===lm.id);
+  if(!st) return;
+
+  const scorers = lm.scorers || [];
+  spot.innerHTML = `
+    <div class="ls-badge"><div class="ls-dot"></div> En direct maintenant</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin:10px 0;">
+      <div style="text-align:center;flex:1;">
+        <div style="font-size:2rem;">${st.home.flag}</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:700;margin-top:4px;">${st.home.name}</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Oswald',sans-serif;font-size:3rem;font-weight:700;color:var(--or);">${lm.hg} – ${lm.ag}</div>
+        <div style="font-size:.6rem;color:var(--mu);">${st.match} · ${st.venue}</div>
+      </div>
+      <div style="text-align:center;flex:1;">
+        <div style="font-size:2rem;">${st.away.flag}</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:700;margin-top:4px;">${st.away.name}</div>
+      </div>
+    </div>
+    ${scorers.length > 0 ? `<div style="text-align:center;font-size:.68rem;color:var(--mu);">
+      ⚽ ${scorers.map(s=>`<span style="color:#ddd;">${s.minute} ${s.name}</span> <span style="color:#444;">(${s.team})</span>`).join(' · ')}
+    </div>` : ''}`;
+}
+
+// ══════════════════════════════════════════════════════
+// BRACKET 8ES
+// ══════════════════════════════════════════════════════
+function getWinnerTeam(matchId){
+  const w = WINNERS[matchId];
+  if(!w) return null;
+  const m = R32_STATIC.find(r=>r.id===matchId);
+  if(!m) return null;
+  return w === m.home.code ? m.home : m.away;
+}
+
+function renderBracket(){
+  const grid = document.getElementById('bracket-grid');
+  grid.innerHTML = '';
+  R16_PAIRS.forEach(p => {
+    const t1 = getWinnerTeam(p.m1);
+    const t2 = getWinnerTeam(p.m2);
+    const isSen = (t1&&t1.code==='SEN')||(t2&&t2.code==='SEN');
+    const card = document.createElement('div');
+    card.className = 'bracket-card' + (isSen?' sen-path':'');
+    const s1 = t1
+      ? `<div class="bc-slot filled ${t1.code==='SEN'?'sen-slot':''}">${t1.flag} ${t1.name}</div>`
+      : `<div class="bc-slot">W ${p.m1.replace('m','M')}</div>`;
+    const s2 = t2
+      ? `<div class="bc-slot filled ${t2.code==='SEN'?'sen-slot':''}">${t2.flag} ${t2.name}</div>`
+      : `<div class="bc-slot">W ${p.m2.replace('m','M')}</div>`;
+    card.innerHTML = `
+      <div class="bc-label">${p.label} · ${p.venue}</div>
+      <div class="bc-teams">${s1}<div class="bc-vs">vs</div>${s2}</div>
+      ${isSen?'<div class="bc-sen-badge">🦁 Le Sénégal peut jouer ici</div>':''}`;
+    grid.appendChild(card);
+  });
+}
+
+// ══════════════════════════════════════════════════════
+// TICKER
+// ══════════════════════════════════════════════════════
+function buildTicker(){
+  const items = R32_STATIC.map(m => {
+    const live = getR32Live(m.id);
+    const status = live.status || 'scheduled';
+    if(status==='final' && live.hg!==null){
+      const cls = m.isSen ? 'ti-sen' : 'ti-fin';
+      return `<span class="ti ${cls}">${m.home.flag} ${m.home.name} <strong>${live.hg}–${live.ag}</strong> ${m.away.name} ${m.away.flag}</span>`;
+    } else if(status==='live'){
+      return `<span class="ti ti-live">🔴 ${m.home.flag} ${live.hg}–${live.ag} ${m.away.flag} · LIVE</span>`;
+    } else {
+      return `<span class="ti ti-sched">${m.match} · ${m.home.flag} ${m.home.name} vs ${m.away.name} ${m.away.flag} · ${m.timeLocal}</span>`;
+    }
+  }).join('');
+  document.getElementById('ticker').innerHTML = items + items;
+}
+
+// ══════════════════════════════════════════════════════
+// SIMULATION
+// ══════════════════════════════════════════════════════
+function pickWinner(matchId, teamCode){
+  WINNERS[matchId] = WINNERS[matchId] === teamCode ? undefined : teamCode;
+  if(WINNERS[matchId] === undefined) delete WINNERS[matchId];
+  renderAll();
+}
+
+// ══════════════════════════════════════════════════════
+// RENDU GLOBAL
+// ══════════════════════════════════════════════════════
+function renderAll(){
+  renderThirds();       // calcule senRank en premier
+  renderSenFocus();     // utilise senRank
+  renderLiveSpotlight();
+  renderR32();
+  renderBracket();
+  buildTicker();
+}
+
+// ══════════════════════════════════════════════════════
+// POLLING — live.json + Netlify Function (fallback)
+// ══════════════════════════════════════════════════════
+async function pollData(){
+  // Essayer d'abord la Netlify Function (scores temps réel)
+  try {
+    const fnRes = await fetch('/.netlify/functions/scores');
+    if(fnRes.ok){
+      const fnData = await fnRes.json();
+      if(!fnData.fallback && fnData.r32){
+        // Merger les scores API dans LIVE_DATA
+        fnData.r32.forEach(upd => {
+          const idx = LIVE_DATA.r32.findIndex(m=>m.id===upd.id);
+          if(idx>=0) Object.assign(LIVE_DATA.r32[idx], upd);
+        });
+      }
+    }
+  } catch(e){ /* API pas dispo, on continue avec live.json */ }
+
+  // Toujours lire live.json pour les données éditoriales (thirdPlaces, groupKWinner)
+  try {
+    const res = await fetch('/live.json?t='+Date.now());
+    if(res.ok){
+      const data = await res.json();
+      if(data.thirdPlaces) LIVE_DATA.thirdPlaces = data.thirdPlaces;
+      if(data.r32) {
+        // live.json écrase seulement si pas de données API
+        data.r32.forEach(upd => {
+          const existing = LIVE_DATA.r32.find(m=>m.id===upd.id);
+          if(!existing) LIVE_DATA.r32.push(upd);
+          else {
+            // live.json est fallback : ne pas écraser si l'API a déjà fourni
+            if(existing.status === 'scheduled' && upd.status !== 'scheduled'){
+              Object.assign(existing, upd);
+            } else if(existing.status === 'scheduled'){
+              Object.assign(existing, upd);
+            }
+          }
+        });
+      }
+      if(data.groupKWinner !== undefined) LIVE_DATA.groupKWinner = data.groupKWinner;
+      if(data.updatedAt){
+        const d = new Date(data.updatedAt);
+        document.getElementById('live-updated-at').textContent =
+          'Mis à jour : '+d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+      }
+      renderAll();
+    }
+  } catch(e){ console.log('live.json indisponible'); }
+}
+
+// ══════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════
+// Initialiser r32 depuis static
+LIVE_DATA.r32 = R32_STATIC.map(m=>({id:m.id, status:'scheduled', hg:null, ag:null, scorers:[]}));
+renderAll();
+pollData();
+setInterval(pollData, 30000);
+</script>
+</body>
+</html>
