@@ -383,7 +383,52 @@ function renderThirds(){
   const oppMap={5:'vs Angleterre',6:'vs Suisse',7:'vs Col./Por.',8:'vs Belgique'};
   document.getElementById('thirds-body').innerHTML=s.map((x,i)=>{const r=i+1,isQ=r<=8,isSen=x.team==='SEN',isLive=x.status==='live';const rc=isSen?'row-sen':isQ?'row-q':r<=10?'row-bub':'row-out';const sb=isLive?'<span class="blv">⚡ Live</span>':isQ?'<span class="bq">✓ Q.</span>':'<span class="belim">✗</span>';const gd=x.gd>0?'+'+x.gd:x.gd;const opp=isQ?(oppMap[r]||'—'):'—';return `<tr class="${rc}"><td class="tr-rank">${r}</td><td class="tr-flag">${x.flag}</td><td class="tr-name">${x.name}${isSen?' 🦁':''}</td><td class="tr-pts">${x.pts}</td><td class="tr-num col-bp">${x.gf}</td><td class="tr-num col-bc">${x.ga}</td><td class="tr-num">${gd}</td><td class="tr-status">${sb}</td><td class="tr-opp" style="color:${isSen?'var(--or)':'var(--mu)'};">${opp}</td></tr>`;}).join('');
 }
-function renderLive(){const lives=LIVE.r32.filter(m=>m.status==='live');const wrap=document.getElementById('live-wrap');if(!lives.length){wrap.style.display='none';return;}wrap.style.display='block';const lm=lives[0],st=R32.find(r=>r.id===lm.id);if(!st)return;const sc=lm.scorers||[];document.getElementById('live-spot').innerHTML=`<div class="ls-badge"><div class="ls-dot"></div> En direct</div><div class="ls-match-row"><div class="ls-team"><span class="ls-team-flag">${st.home.flag}</span><div class="ls-team-name">${st.home.name}</div></div><div class="ls-score-block"><div class="ls-score">${lm.hg} – ${lm.ag}</div><div class="ls-meta">${st.match} · ${st.venue}</div></div><div class="ls-team"><span class="ls-team-flag">${st.away.flag}</span><div class="ls-team-name">${st.away.name}</div></div></div>${sc.length?`<div class="ls-scorers">⚽ ${sc.map(s=>`<span style="color:#ddd">${s.minute} ${s.name}</span> <span style="color:#555">(${s.team})</span>`).join(' · ')}</div>`:'`}`;}
+function renderLive(){
+  const lives = LIVE.r32.filter(m => m.status === 'live');
+  const wrap = document.getElementById('live-wrap');
+  const spot = document.getElementById('live-spot');
+
+  if(!wrap || !spot) return;
+
+  if(!lives.length){
+    wrap.style.display = 'none';
+    return;
+  }
+
+  const lm = lives[0];
+  const st = R32.find(r => r.id === lm.id);
+  if(!st){
+    wrap.style.display = 'none';
+    return;
+  }
+
+  wrap.style.display = 'block';
+  const scorers = lm.scorers || [];
+  const scorersHtml = scorers.length
+    ? `<div class="ls-scorers">⚽ ${scorers.map(s =>
+        `<span style="color:#ddd">${s.minute} ${s.name}</span> <span style="color:#555">(${s.team})</span>`
+      ).join(' · ')}</div>`
+    : '';
+
+  spot.innerHTML = `
+    <div class="ls-badge"><div class="ls-dot"></div> En direct</div>
+    <div class="ls-match-row">
+      <div class="ls-team">
+        <span class="ls-team-flag">${st.home.flag}</span>
+        <div class="ls-team-name">${st.home.name}</div>
+      </div>
+      <div class="ls-score-block">
+        <div class="ls-score">${lm.hg ?? 0} – ${lm.ag ?? 0}</div>
+        <div class="ls-meta">${st.match} · ${st.venue}</div>
+      </div>
+      <div class="ls-team">
+        <span class="ls-team-flag">${st.away.flag}</span>
+        <div class="ls-team-name">${st.away.name}</div>
+      </div>
+    </div>
+    ${scorersHtml}
+  `;
+}
 function getLv(id){return LIVE.r32.find(r=>r.id===id)||{};}
 function renderR32(){
   const grid=document.getElementById('r32-grid');grid.innerHTML='';let lastDay='';
